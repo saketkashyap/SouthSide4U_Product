@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: southside4u-product
+    
+server:
+  port: ${PORT:8002}    
