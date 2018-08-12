@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Employee-1</name>
+	<name>southside_product</name>
 	<description>SouthSide4U&#39;s produtcs</description>
 
 	  <parent>
