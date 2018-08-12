@@ -1,10 +1,12 @@
 package com.ibm.southside4u.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ibm.southside4u.service.IProductService;
 import com.ibm.southside4u.utils.CustomLogger;
 
+@Service
 public class ProductServiceImpl implements IProductService {
 
 @Autowired
