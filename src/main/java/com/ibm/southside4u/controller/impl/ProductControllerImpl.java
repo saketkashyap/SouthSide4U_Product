@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ibm.southside4u.controller.IProductController;
 import com.ibm.southside4u.model.Product;
 import com.ibm.southside4u.service.IProductService;
-import com.ibm.southside4u.so.ProductInfo;
 import com.ibm.southside4u.so.ProductRequest;
 import com.ibm.southside4u.utils.CustomLogger;
 
@@ -29,26 +28,30 @@ public class ProductControllerImpl implements IProductController {
 	@Autowired
 	IProductService prodService;
 	@Override
-	public ResponseEntity<List<ProductInfo>> getAllProducts() {
+	public ResponseEntity<List<Product>> getAllProducts() {
 		String methodName = "getAllProducts";
 		logger.methodEntryLogger(ProductControllerImpl.class, methodName);
 		List<Product> product= prodService.getAllProducts();
-		 List<ProductInfo> productInfoList = new ArrayList<>();
-		for(Product prod :product )
-		{
-			ProductInfo info = new ProductInfo();
-			info.setProductId(prod.getId());
-			info.setProductName(prod.getProductname());
-			info.setProductType(prod.getProducttype());
-			productInfoList.add(info);
-		}
-		return ResponseEntity.status(HttpStatus.OK).body(productInfoList);
+		return ResponseEntity.status(HttpStatus.OK).body(product);
 		
 	}
 
 	@Override
-	public void getProductsAttrByName(@PathVariable("name") String name) {
-
+	public ResponseEntity<List<Product>> getProductsAttrByName(@PathVariable("name")  String name) {
+		String methodName = "getProductsAttrByName";
+		List<Product> prod = new ArrayList<>();
+		try
+		{
+			 prod = prodService.getProductsAttrByName(name);
+			 return ResponseEntity.status(HttpStatus.OK).body(prod);
+		}
+	
+		catch(Exception e)
+		{
+			logger.exceptionLogger(ProductControllerImpl.class, methodName, e.getMessage());
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(prod);
+			
+		}
 		
 	}
 

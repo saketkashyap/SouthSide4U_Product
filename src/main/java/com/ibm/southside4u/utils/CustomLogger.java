@@ -26,4 +26,10 @@ public class CustomLogger {
 		Logger log = Logger.getLogger(className);
 		return log;
 	}
+	
+	public void exceptionLogger(Class<?> className,String methodName,String exceptionMsg)
+	{
+		Logger logger = getLoggerType(className);
+		logger.info("In class :"+className.toString() +",In method:"+methodName+",exception thrown:"+exceptionMsg);
+	}
 }

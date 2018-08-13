@@ -11,7 +11,7 @@ public interface IProductService {
 	public List<Product> getAllProducts() ;
 
 	
-	public void getProductsAttrByName(String name);
+	public List<Product> getProductsAttrByName(String name);
 
 	
 	public void getProductsAttrById(Integer id);

@@ -28,8 +28,9 @@ IProductRepository prodRepo;
 	}
 
 	@Override
-	public void getProductsAttrByName(String name) {
-
+	public List<Product> getProductsAttrByName(String name) {
+       List<Product> prod = prodRepo.findProductAttrByName(name);
+       return prod;
 	}
 
 	@Override
