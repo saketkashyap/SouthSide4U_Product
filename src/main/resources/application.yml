@@ -7,4 +7,15 @@ spring:
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${DISCOVERY_URL:http://localhost:8002}/eureka/
+    fetch-registry: true
+    register-with-eureka: true  
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
     
+  
